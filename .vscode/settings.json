@@ -29,5 +29,6 @@
   },
   "vs-code-prettier-eslint.prettierLast": true,
   "reactSnippets.settings.prettierEnabled": true,
-  "editor.defaultFoldingRangeProvider": "ms-vscode.js-debug"
+  "editor.defaultFoldingRangeProvider": "ms-vscode.js-debug",
+  "prettier.bracketSameLine": true
 }
