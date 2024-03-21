@@ -1,38 +1,50 @@
+// Home.tsx
 import React from 'react';
 import {
+  ChakraProvider,
   Box,
   Flex,
+  VStack,
+  Button,
+  Heading,
   FormControl,
   FormLabel,
   Input,
-  Button,
-  ChakraProvider,
+  theme,
 } from '@chakra-ui/react';
+import {Navbar} from './Navbar';
 
-const Navbar: React.FC = () => (
-  <Box bg="tomato" w="100%" p={4} color="white">
-    Navbar Content Here
-  </Box>
-);
-
-const FormColumn: React.FC<{ title: string }> = ({ title }) => (
-  <Box flex="1" p="5">
-    <FormControl>
-      <FormLabel>{title} Form Label</FormLabel>
-      <Input placeholder={`${title} Input`} />
-      <Button mt="4">Submit</Button>
+const FormColumn = ({ title }: { title: string }) => {
+  return (
+    <Box flex="1" p="5">
+      <FormControl>
+        <FormLabel>{title} Form Label</FormLabel>
+        <Input placeholder={`${title} Input`} />
+        <Button mt="4">Submit</Button>
+      </FormControl>
+    </Box>
+  );
+};
+const Form: React.FC<{ title: string }> = ({ title }) => {
+  return (
+    <FormControl padding="20px" border="1px" borderColor="gray.200">
+      <FormLabel>{title} Form</FormLabel>
+      <Input type="text" placeholder={`Enter ${title}`} mb={4} />
+      <Button colorScheme="blue">Submit</Button>
     </FormControl>
-  </Box>
-);
+  );
+};
 
 const Home: React.FC = () => {
   return (
-    <ChakraProvider>
-      <Flex direction="column" align="center" m="4">
+    <ChakraProvider theme={theme}>
+      <Flex>
         <Navbar />
-        <Flex direction="row" w="100%" justify="space-around" mt="6">
-          <FormColumn title="First" />
-          <FormColumn title="Second" />
+        <Flex direction="column" flex="1" overflowY="auto">
+          <Flex direction={{ base: "column", md: "row" }} justify="space-around" p="4">
+            <FormColumn title="First" />
+            <FormColumn title="Second" />
+          </Flex>
         </Flex>
       </Flex>
     </ChakraProvider>
